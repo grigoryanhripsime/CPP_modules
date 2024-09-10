@@ -2,11 +2,13 @@ NAME =
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -I $(HPPS) -std=c++98
 
-SRCS = megaphone.cpp
+CPPS = Contact.cpp main.cpp PhoneBook.cpp
 
-OBJS = $(SRCS:.c = .o)
+HPPS = Contact.hpp PhoneBook.hpp
+
+OBJS = $(CPPS:.cpp = .o)
 
 rm = rm -rf
 
@@ -15,7 +17,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-%.o: %.c Makefile
+%.o: %.cpp Makefile $(HPPS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
