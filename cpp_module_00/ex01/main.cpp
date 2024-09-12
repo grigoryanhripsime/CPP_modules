@@ -10,25 +10,20 @@ int main(void)
 
 	while (1)
 	{
-		string command;
+		std::string command;
 		std::cout<<"Enter the command: ";
-		std::getline(std::cin, name);
+		std::getline(std::cin, command);
 		if (command == "ADD")
 		{
 			if (i == 7)
 				i = 0;
 			phonebook.set_new_contact(i);
 			i++;
-			break ;
 		}
 		if (command == "SEARCH")
 		{
-			while (1)
-			{
-				phonebook.get_contacts();
+			phonebook.get_contacts();
 				// std::cout<<"Enter the index: ";
-			}
-			break ;
 		}
 		if (command == "EXIT")
 			break ;
