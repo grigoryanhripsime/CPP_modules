@@ -80,11 +80,21 @@ void PhoneBook::get_contacts()
 		print(this->contacts[j].get_last_name());
 		std::cout<<"|";
 		print(this->contacts[j].get_nickname());
-		std::cout<<"|";
-		print(this->contacts[j].get_phone_number());
-		std::cout<<"|";
-		print(this->contacts[j].get_darkest_secret());
 		j++;
 		std::cout<<std::endl;
 	}
+}
+
+int PhoneBook::get_count()
+{
+	return this->count;
+}
+
+void PhoneBook::print_contact(int index)
+{
+	std::cout<<"First name: "<<this->contacts[index - 1].get_first_name()<<std::endl;
+	std::cout<<"Last name: "<<this->contacts[index - 1].get_last_name()<<std::endl;
+	std::cout<<"Nickname: "<<this->contacts[index - 1].get_nickname()<<std::endl;
+	std::cout<<"Phone number: "<<this->contacts[index - 1].get_phone_number()<<std::endl;
+	std::cout<<"Darkest secret: "<<this->contacts[index - 1].get_darkest_secret()<<std::endl;
 }

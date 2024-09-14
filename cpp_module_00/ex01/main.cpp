@@ -23,9 +23,22 @@ int main(void)
 		if (command == "SEARCH")
 		{
 			phonebook.get_contacts();
-				// std::cout<<"Enter the index: ";
+			std::string index_str;
+			while (1)
+			{
+				std::cout<<"Enter the index: ";
+				std::getline(std::cin, index_str);
+				if (std::cin.eof())
+					break ;
+				if (index_str.length() != 1 || index_str[0] <= '0' || index_str[0] - '0' > phonebook.get_count())
+					continue ;
+				phonebook.print_contact(index_str[0] - '0');
+				break ;
+			}
 		}
 		if (command == "EXIT")
+			break ;
+		if (std::cin.eof())
 			break ;
 	}
 }

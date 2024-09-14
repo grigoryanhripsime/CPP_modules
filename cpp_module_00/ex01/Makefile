@@ -8,14 +8,14 @@ CPPS = Contact.cpp main.cpp PhoneBook.cpp
 
 HPPS = Contact.hpp PhoneBook.hpp
 
-OBJS = $(CPPS:.cpp = .o)
+OBJS = $(CPPS:.cpp=.o)
 
-rm = rm -rf
+rm = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp Makefile $(HPPS)
 	$(CC) $(CFLAGS) -c $< -o $@

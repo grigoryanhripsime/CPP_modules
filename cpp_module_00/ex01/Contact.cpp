@@ -11,9 +11,22 @@ Contact::~Contact()
 {
 	std::cout<<"Contact Destroyed"<<std::endl;
 }
+
+int contains_space(std::string str)
+{
+	int i = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ')
+			return 1;
+		i++;
+	}
+	return 0;
+}
+
 int Contact::set_first_name(std::string first_name)
 {
-	if (first_name.length() == 0)
+	if (first_name.length() == 0 || contains_space(first_name))
 		return 0;
 	this->first_name = first_name;
 	return 1;
@@ -21,7 +34,7 @@ int Contact::set_first_name(std::string first_name)
 
 int Contact::set_last_name(std::string last_name)
 {
-	if (last_name.length() == 0)
+	if (last_name.length() == 0 || contains_space(last_name))
 		return 0;
 	this->last_name = last_name;
 	return 1;
@@ -29,7 +42,7 @@ int Contact::set_last_name(std::string last_name)
 
 int Contact::set_nickname(std::string nickname)
 {
-	if (nickname.length() == 0)
+	if (nickname.length() == 0 || contains_space(nickname))
 		return 0;
 	this->nickname = nickname;
 	return 1;
@@ -39,6 +52,14 @@ int Contact::set_phone_number(std::string phone_number)
 {
 	if (phone_number.length() == 0)
 		return 0;
+	int i = 0;
+	while (phone_number[i])
+	{
+		if (!((phone_number[i] >= '0' && phone_number[i] <= '9')
+			|| phone_number[i] == '+'))
+			return 0;
+		i++;
+	}
 	this->phone_number = phone_number;
 	return 1;
 }
