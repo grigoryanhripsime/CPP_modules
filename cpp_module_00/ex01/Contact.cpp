@@ -4,12 +4,12 @@
 
 Contact::Contact()
 {
-	std::cout<<"Contact created"<<std::endl;
+	// std::cout<<"Contact created"<<std::endl;
 }
 
 Contact::~Contact()
 {
-	std::cout<<"Contact Destroyed"<<std::endl;
+	// std::cout<<"Contact Destroyed"<<std::endl;
 }
 
 int contains_space(std::string str)
@@ -24,9 +24,19 @@ int contains_space(std::string str)
 	return 0;
 }
 
+int contains_letters(std::string str)
+{
+	for (int i = 0; i < (int)str.size(); i++)
+	{
+		if (!(str[i] >= 'a' && str[i] <= 'z') && !(str[i] >= 'A' && str[i] <= 'Z'))
+			return 0;
+	}
+	return 1;
+}
+
 int Contact::set_first_name(std::string first_name)
 {
-	if (first_name.length() == 0 || contains_space(first_name))
+	if (first_name.length() == 0 || contains_space(first_name) || !contains_letters(first_name))
 		return 0;
 	this->first_name = first_name;
 	return 1;
@@ -34,7 +44,7 @@ int Contact::set_first_name(std::string first_name)
 
 int Contact::set_last_name(std::string last_name)
 {
-	if (last_name.length() == 0 || contains_space(last_name))
+	if (last_name.length() == 0 || contains_space(last_name) || !contains_letters(last_name))
 		return 0;
 	this->last_name = last_name;
 	return 1;

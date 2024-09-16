@@ -11,7 +11,10 @@ int main(void)
 	while (1)
 	{
 		std::string command;
-		std::cout<<"Enter the command: ";
+		if (!std::cin.eof())
+			std::cout<<"Enter the command: ";
+		else
+			break ;	
 		std::getline(std::cin, command);
 		if (command == "ADD")
 		{
@@ -20,8 +23,13 @@ int main(void)
 			phonebook.set_new_contact(i);
 			i++;
 		}
-		if (command == "SEARCH")
+		else if (command == "SEARCH")
 		{
+			if (phonebook.get_count() == 0)
+			{
+				std::cout<<"You don't have any contacts!!"<<std::endl;
+				continue ;
+			}
 			phonebook.get_contacts();
 			std::string index_str;
 			while (1)
@@ -31,14 +39,18 @@ int main(void)
 				if (std::cin.eof())
 					break ;
 				if (index_str.length() != 1 || index_str[0] <= '0' || index_str[0] - '0' > phonebook.get_count())
+				{
+					std::cout<<"Invalid input!!"<<std::endl;
 					continue ;
+				}
 				phonebook.print_contact(index_str[0] - '0');
 				break ;
 			}
 		}
-		if (command == "EXIT")
+		else if (command == "EXIT")
 			break ;
-		if (std::cin.eof())
-			break ;
+		else
+			std::cout<<"Invalid input!!"<<std::endl;
+
 	}
 }

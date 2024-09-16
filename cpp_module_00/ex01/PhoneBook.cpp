@@ -3,13 +3,13 @@
 
 PhoneBook::PhoneBook()
 {
-	std::cout<<"PhoneBook created"<<std::endl;
+	// std::cout<<"PhoneBook created"<<std::endl;
 	this->count = 0;
 }
 
 PhoneBook::~PhoneBook()
 {
-	std::cout<<"PhoneBook destroyed"<<std::endl;
+	// std::cout<<"PhoneBook destroyed"<<std::endl;
 }
 
 void PhoneBook::set_new_contact(int i)
@@ -19,7 +19,7 @@ void PhoneBook::set_new_contact(int i)
 		std::string name;
 		std::cout<<"Enter first name: ";
 		getline(std::cin, name);
-		if (this->contacts[i].set_first_name(name))
+		if (std::cin.eof() || this->contacts[i].set_first_name(name))
 			break ;
 	}
 	while(1)
@@ -27,7 +27,7 @@ void PhoneBook::set_new_contact(int i)
 		std::string lname;
 		std::cout<<"Enter last name: ";
 		getline(std::cin, lname);
-		if (this->contacts[i].set_last_name(lname))
+		if (std::cin.eof() || this->contacts[i].set_last_name(lname))
 			break ;
 	}
 	while(1)
@@ -35,7 +35,7 @@ void PhoneBook::set_new_contact(int i)
 		std::string nickname;
 		std::cout<<"Enter nickname: ";
 		getline(std::cin, nickname);
-		if (this->contacts[i].set_nickname(nickname))
+		if (std::cin.eof() || this->contacts[i].set_nickname(nickname))
 			break ;
 	}
 	while(1)
@@ -43,7 +43,7 @@ void PhoneBook::set_new_contact(int i)
 		std::string number;
 		std::cout<<"Enter phone number: ";
 		getline(std::cin, number);
-		if (this->contacts[i].set_phone_number(number))
+		if (std::cin.eof() || this->contacts[i].set_phone_number(number))
 			break ;
 	}
 	while(1)
@@ -51,7 +51,7 @@ void PhoneBook::set_new_contact(int i)
 		std::string secret;
 		std::cout<<"Enter darkest secret: ";
 		getline(std::cin, secret);
-		if (this->contacts[i].set_darkest_secret(secret))
+		if (std::cin.eof() || this->contacts[i].set_darkest_secret(secret))
 			break ;
 	}
 	if (this->count < 8)
@@ -72,9 +72,10 @@ void print(std::string str)
 void PhoneBook::get_contacts()
 {
 	int j = 0;
+	std::cout<<"  Index|First name| Last name|  Nickname"<<std::endl;
 	while (j < this->count)
 	{
-		std::cout<<"         "<<j<<"|";
+		std::cout<<"      "<<j + 1<<"|";
 		print(this->contacts[j].get_first_name());
 		std::cout<<"|";
 		print(this->contacts[j].get_last_name());
