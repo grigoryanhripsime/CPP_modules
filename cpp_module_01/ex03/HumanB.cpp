@@ -12,7 +12,7 @@ std::string HumanB::getName()
 
 void HumanB::setWeapon(Weapon weapon)
 {
-	*(this->weapon) = weapon;
+	this->weapon = &weapon;
 }
 
 Weapon HumanB::getWeapon()
@@ -22,7 +22,10 @@ Weapon HumanB::getWeapon()
 
 void HumanB::attack()
 {
-	std::cout<<this->name<<" attacks with their "<<this->weapon->getType();
+	if (!this->weapon)
+		std::cout<<this->name<<" can't attack"<<std::endl;
+	else
+		std::cout<<this->name<<" attacks with their "<<this->weapon->getType()<<std::endl;
 }
 
 
