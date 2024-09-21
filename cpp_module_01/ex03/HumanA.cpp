@@ -1,19 +1,14 @@
 #include "HumanA.hpp"
 
-void HumanA::setName(std::string name)
-{
-	this->name = name;
-}
-
-std::string HumanA::getName()
-{
-	return this->name;
-}
-
 HumanA::HumanA(std::string name, Weapon &weapon) : weapon(weapon)
 {
 	this->name = name;
 	// this->weapon = weapon;
+	std::cout<<"HumanA named "<<name<<" was created!"<<std::endl;
+}
+HumanA::~HumanA()
+{
+	std::cout<<"HumanA named "<<name<<" was destroyed!"<<std::endl;
 }
 
 void HumanA::attack()
