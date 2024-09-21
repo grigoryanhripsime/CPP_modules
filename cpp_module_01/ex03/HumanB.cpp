@@ -3,7 +3,7 @@
 HumanB::HumanB(std::string name)
 {
 	this->name = name;
-	*(this->weapon) = Weapon("");
+	this->weapon = nullptr;
 	std::cout<<"HumanB named "<<name<<" was created!"<<std::endl;
 }
 
@@ -12,7 +12,7 @@ HumanB::~HumanB()
 	std::cout<<"HumanB named "<<name<<" was destroyed!"<<std::endl;
 }
 
-void HumanB::setWeapon(Weapon weapon)
+void HumanB::setWeapon(Weapon &weapon)
 {
 	this->weapon = &weapon;
 }

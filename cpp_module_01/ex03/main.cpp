@@ -1,6 +1,7 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 #include "Weapon.hpp"
+#include <iostream>
 
 int main()
 {
@@ -16,7 +17,6 @@ Weapon club = Weapon("crude spiked club");
 HumanB jim("Jim");
 jim.setWeapon(club);
 jim.attack();
-std::cout<<"Im here"<<std::endl;
 club.setType("some other type of club");
 jim.attack();
 }
