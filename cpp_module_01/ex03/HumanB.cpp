@@ -1,13 +1,15 @@
 #include "HumanB.hpp"
 
-void HumanB::setName(std::string name)
+HumanB::HumanB(std::string name)
 {
 	this->name = name;
+	*(this->weapon) = Weapon("");
+	std::cout<<"HumanB named "<<name<<" was created!"<<std::endl;
 }
 
-std::string HumanB::getName()
+HumanB::~HumanB()
 {
-	return this->name;
+	std::cout<<"HumanB named "<<name<<" was destroyed!"<<std::endl;
 }
 
 void HumanB::setWeapon(Weapon weapon)
@@ -29,8 +31,3 @@ void HumanB::attack()
 }
 
 
-HumanB::HumanB(std::string name)
-{
-	this->name = name;
-	this->weapon = nullptr;
-}
