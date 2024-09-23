@@ -38,14 +38,22 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
-    if (level == "DEBUG")
-        this->debug();
-    else if (level == "INFO")
-        this->info();
-    else if (level == "WARNING")
-        this->warning();
-    else if (level == "INFO")
-        this->info();
-    else
-        std::cout<<"[ Probably complaining about insignificant problems ]"<<std::endl;
+	void (Harl::*func_ptr[4])(void) =  {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string array[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+	int i = 0;
+	while (i < 5)
+	{
+		if (level == array[i])
+		{
+			(this->*func_ptr[i])();
+			return ;
+		}
+		i++;
+	}
+	if (i == 5)
+	{
+		std::cout<<"[ Probably complaining about insignificant problems ]"<<std::endl;
+		exit(1);
+	}
 }
