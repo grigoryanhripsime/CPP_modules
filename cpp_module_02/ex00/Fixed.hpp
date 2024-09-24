@@ -5,8 +5,8 @@
 class Fixed
 {
 	private:
-		int a;
-		static const int b = 8;
+		int num;
+		static const int flactional_bits = 8;
 	public:
 		Fixed();
 		Fixed(Fixed &fixed);
