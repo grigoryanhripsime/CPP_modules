@@ -6,7 +6,7 @@ Fixed::Fixed()
 	std::cout<<"Default constructor called"<<std::endl;
 }
 
-Fixed::Fixed(Fixed &fixed)
+Fixed::Fixed(const Fixed &fixed)
 {
 	this->num = fixed.num;
 	std::cout<<"Copy constructor called"<<std::endl;

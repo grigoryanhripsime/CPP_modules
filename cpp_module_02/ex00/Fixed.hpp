@@ -9,7 +9,7 @@ class Fixed
 		static const int flactional_bits = 8;
 	public:
 		Fixed();
-		Fixed(Fixed &fixed);
+		Fixed(const Fixed &fixed);
 		Fixed &operator=(const Fixed &fixed);
 		~Fixed();
 		int getRawBits (void) const;
