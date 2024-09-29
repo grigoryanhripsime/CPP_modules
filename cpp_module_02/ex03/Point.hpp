@@ -12,5 +12,9 @@ class Point
 		Point(const float x, const float y);
 		Point (const Point &point);
 		Point &operator=(const Point &point);
+		Fixed getX() const;
+		Fixed getY() const;
 		~Point();
 };
+
+bool bsp(Point const a, Point const b, Point const c, Point const point);
