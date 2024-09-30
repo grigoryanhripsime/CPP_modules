@@ -4,20 +4,17 @@
 
 std::string replace_str(std::string line, std::string old_str, std::string new_str)
 {
-	std::string old_line = line;
 	if (old_str.size() == 0)
 		return line;
-	for (int i = 0; i < (int)old_line.size(); i++)
+	while (1)
 	{
-		int index = old_line.find(old_str);
-		std::string first_part = old_line.substr(0, index);
+		int index = line.find(old_str);
 		if (index == -1)
 			break ;
-		first_part += new_str + old_line.substr(index + old_str.size());
-		old_line = first_part;
-		i = 0;
+		line.erase(index, old_str.size());
+		line.insert(index, new_str);
 	}
-	return old_line;
+	return line;
 }
 
 int main(int argc, char *argv[])
@@ -43,7 +40,6 @@ int main(int argc, char *argv[])
     }
 	while (std::getline(file, line))
 	{
-		// std::cout<<line<<std::endl;
 		line = replace_str(line, argv[2], argv[3]);
 		out_file<<line<<std::endl;
 	}

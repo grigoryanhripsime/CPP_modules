@@ -11,11 +11,10 @@ int main(void)
 	while (1)
 	{
 		std::string command;
-		if (!std::cin.eof())
-			std::cout<<"Enter the command: ";
-		else
-			break ;	
+		std::cout<<"Enter the command: ";
 		std::getline(std::cin, command);
+		if (std::cin.eof())
+			exit(0);
 		if (command == "ADD")
 		{
 			if (i == 7)
@@ -37,7 +36,7 @@ int main(void)
 				std::cout<<"Enter the index: ";
 				std::getline(std::cin, index_str);
 				if (std::cin.eof())
-					break ;
+					exit(0);
 				if (index_str.length() != 1 || index_str[0] <= '0' || index_str[0] - '0' > phonebook.get_count())
 				{
 					std::cout<<"Invalid input!!"<<std::endl;

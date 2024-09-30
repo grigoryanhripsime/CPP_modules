@@ -2,11 +2,12 @@
 
 Zombie::Zombie()
 {
-	std::cout<<"Zombie was created"<<std::endl;
+	this->name = "Unknown";
+	std::cout<<"Zombie named "<<this->name<<" was destroyed"<<std::endl;
 }
 Zombie::~Zombie()
 {
-	std::cout<<"Zombie was destroyed"<<std::endl;
+	std::cout<<"Zombie named "<<this->name<<" was destroyed"<<std::endl;
 }
 
 void Zombie::announce(void)

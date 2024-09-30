@@ -3,7 +3,7 @@
 HumanB::HumanB(std::string name)
 {
 	this->name = name;
-	this->weapon = nullptr;
+	this->weapon = NULL;
 	std::cout<<"HumanB named "<<name<<" was created!"<<std::endl;
 }
 

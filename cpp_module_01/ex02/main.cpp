@@ -10,10 +10,10 @@ int main(void)
 
 	std::cout << "Addresses:" << std::endl;
 	std::cout << &str << std::endl;
-	std::cout << &strPTR << std::endl;
-	std::cout << &strREF << std::endl;
-	std::cout << "values:" << std::endl;
-	std::cout << str << std::endl;
 	std::cout << strPTR << std::endl;
+	std::cout << &strREF << std::endl;
+	std::cout << "Values:" << std::endl;
+	std::cout << str << std::endl;
+	std::cout << *strPTR << std::endl;
 	std::cout << strREF << std::endl;
 }
