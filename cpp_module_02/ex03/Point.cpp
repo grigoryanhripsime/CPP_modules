@@ -21,14 +21,14 @@ Point &Point::operator=(const Point &point)
 	return *this;
 }
 
-Fixed Point::getX() const
+float Point::getX() const
 {
-	return this->x;
+	return this->x.toFloat();
 }
 
-Fixed Point::getY() const
+float Point::getY() const
 {
-	return this->y;
+	return this->y.toFloat();
 }
 
 Point::~Point()
@@ -38,28 +38,24 @@ Point::~Point()
 
 float sign(const Point &p1, const Point &p2, const Point &p3)
 {
-	// std::cout<<"hehe"<<std::endl;
-	float p1_x = p1.getX().toFloat();
-	float p1_y = p1.getY().toFloat();
-	float p2_x = p2.getX().toFloat();
-	float p2_y = p2.getY().toFloat();
-	float p3_x = p3.getX().toFloat();
-	float p3_y = p3.getY().toFloat();
-	// std::cout<<"hehe"<<std::endl;
-	return ((p1_x - p3_x) * (p2_y - p3_y) - (p2_x - p3_x) * (p1_y - p3_y));
+	return ((p1.getX() - p3.getX()) * (p2.getY() - p3.getY())
+			- (p2.getX() - p3.getX()) * (p1.getY() - p3.getX()));
 }
 
 bool bsp(Point const a, Point const b, Point const c, Point const point)
 {
-	// std::cout<<"hehe"<<std::endl;
+	if ((point.getX() - a.getX()) / (a.getX() - b.getX()) == (point.getY() - a.getY()) / (a.getY() - b.getY()))
+		return false;
+	if ((point.getX() - b.getX()) / (b.getX() - c.getX()) == (point.getY() - b.getY()) / (b.getY() - c.getY()))
+		return false;
+	if ((point.getX() - a.getX()) / (a.getX() - c.getX()) == (point.getY() - a.getY()) / (a.getY() - c.getY()))
+		return false;
 	float d1 = sign(point, a, b);
 	float d2 = sign(point, b, c);
 	float d3 = sign(point, c, a);
-
-	const float epsilon = 1e-6;
-	if (d1 == 0 || d2 == 0 || d3 == 0 || fabs(d1) < epsilon || fabs(d2) < epsilon || fabs(d3) < epsilon)
+	if (d1 == 0 || d2 == 0 || d3 == 0)
 		return false;
-	return !(((d1 < -epsilon) || (d2 < -epsilon) || (d3 < -epsilon)) && ((d1 > epsilon) || (d2 > epsilon) || (d3 > epsilon)));
+	return !(((d1 < 0) || (d2 < 0) || (d3 < 0)) && ((d1 > 0) || (d2 > 0) || (d3 > 0)));
 }
 
 
