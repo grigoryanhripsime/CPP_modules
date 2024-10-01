@@ -17,6 +17,9 @@ Point::Point(const Point &point) : x(point.x), y(point.y)
 
 Point &Point::operator=(const Point &point)
 {
+	if (this == &point)
+		return *this;
+	std::cout<<"Point copy assignment operator called"<<std::endl;
 	(void) point;
 	return *this;
 }
