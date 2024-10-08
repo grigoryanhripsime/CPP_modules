@@ -7,34 +7,34 @@ void ScavTrap::guardGate()
 
 ScavTrap::ScavTrap()
 {
-	std::cout<<"ScavTrap default constructor called!\n";
 	this->name = "Unknown";
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
+	std::cout<<"ScavTrap "<< this->name <<" was created!\n";
 }
 
 ScavTrap::~ScavTrap()
 {
-	std::cout<<"ScavTrap default destructor called!\n";
+	std::cout<<"ScavTrap "<< this->name <<" was destructed!\n";
 }
 
 ScavTrap::ScavTrap(std::string name)
 {
-	std::cout<<"ScavTrap constructor with params called!\n";
 	this->name = name;
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
+	std::cout<<"ScavTrap "<< this->name <<" was created!\n";
 }
 
 ScavTrap::ScavTrap(ScavTrap &scavtrap)
 {
-	std::cout<<"ScavTrap copy constructor called!\n";
 	this->name = scavtrap.name;
 	this->hit_points = scavtrap.hit_points;
 	this->energy_points = scavtrap.energy_points;
 	this->attack_damage = scavtrap.attack_damage;
+	std::cout<<"ScavTrap "<< this->name <<" was created!\n";
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &scavtrap)

@@ -4,7 +4,7 @@
 
 class ClapTrap
 {
-	private: //need to change
+	private:
 		std::string name;
 		long long hit_points;
 		long long energy_points;

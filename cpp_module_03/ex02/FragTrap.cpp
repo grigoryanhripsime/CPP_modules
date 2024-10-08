@@ -7,34 +7,29 @@ void FragTrap::highFivesGuys(void)
 
 FragTrap::FragTrap()
 {
-	std::cout<<"FragTrap default constructor called!\n";
 	this->name = "Unknown";
 	this->hit_points = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
+	std::cout<<"FragTrap "<< this->name <<" was created!\n";
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout<<"FragTrap default destructor called!\n";
+	std::cout<<"FragTrap "<< this->name <<" was destructed!\n";
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout<<"FragTrap constructor with params called!\n";
-	this->name = name;
 	this->hit_points = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
+	std::cout<<"FragTrap "<< this->name <<" was created!\n";
 }
 
-FragTrap::FragTrap(FragTrap &fragtrap)
+FragTrap::FragTrap(FragTrap &fragtrap) :ClapTrap(fragtrap)
 {
-	std::cout<<"FragTrap copy constructor called!\n";
-	this->name = fragtrap.name;
-	this->hit_points = fragtrap.hit_points;
-	this->energy_points = fragtrap.energy_points;
-	this->attack_damage = fragtrap.attack_damage;
+	std::cout<<"FragTrap "<< this->name <<" was created!\n";
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &fragtrap)

@@ -1,12 +1,12 @@
-NAME =  Repetitive_work
+NAME =  Now_it_s_weird
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+CPPS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
-HPPS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+HPPS =	ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
 OBJS = $(CPPS:.cpp=.o)
 
