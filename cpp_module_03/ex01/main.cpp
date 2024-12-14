@@ -1,14 +1,15 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
+
 int main(void)
 {
-	ClapTrap claptrap;
-	ScavTrap n("anun");
-	// std::cout<<claptrap.name<<" "<<claptrap.hit_points<<" "<<claptrap.energy_points<<" "<<claptrap.attack_damage<<"\n";
-	claptrap.attack("aaa");
-	n.attack("bbb");
-	claptrap.takeDamage(-5);
-	claptrap.beRepaired(10);
-	claptrap.takeDamage(5);
+	ScavTrap scavtrap1;
+	ClapTrap *scavtrap2 = new ScavTrap("anun");
+	scavtrap2->attack("bbb");
+	scavtrap1.attack("aaa");
+	scavtrap1.takeDamage(-5);
+	scavtrap1.beRepaired(10);
+	scavtrap1.takeDamage(5);
+	delete (scavtrap2);
 }
