@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap()
+FragTrap::FragTrap() : ClapTrap()
 {
 	this->hit_points = 100;
 	this->energy_points = 100;
@@ -10,33 +10,20 @@ FragTrap::FragTrap()
 
 FragTrap::~FragTrap()
 {
-	std::cout<<"FragTrap "<< this->name <<" was destructed!\n";
+	std::cout<<"FragTrap "<< this->name <<" was destructed! (default ctor)\n";
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	this->name = name;
 	this->hit_points = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
-	std::cout<<"FragTrap "<< this->name <<" was created!\n";
+	std::cout<<"FragTrap "<< this->name <<" was created! (ctor w/params)\n";
 }
 
-FragTrap::FragTrap(int, int)
+FragTrap::FragTrap(FragTrap &fragtrap) : ClapTrap(fragtrap)
 {
-
-	this->hit_points = 100;
-	this->attack_damage = 30;
-	std::cout<<"FragTrap "<< this->name <<" was created!\n";
-}
-
-FragTrap::FragTrap(FragTrap &fragtrap)
-{
-	this->name = fragtrap.name;
-	this->hit_points = fragtrap.hit_points;
-	this->energy_points = fragtrap.energy_points;
-	this->attack_damage = fragtrap.attack_damage;
-	std::cout<<"FragTrap "<< this->name <<" was created!\n";
+	std::cout<<"FragTrap "<< this->name <<" was created! (copy ctor)\n";
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &fragtrap)
@@ -54,4 +41,11 @@ FragTrap &FragTrap::operator=(const FragTrap &fragtrap)
 void FragTrap::highFivesGuys(void)
 {
 	std::cout<<"FragTrap named" << this->name <<" sends high fives\n";
+}
+
+FragTrap::FragTrap(int a, int b)
+{
+	this->hit_points = a;
+	this->attack_damage = b;
+	std::cout<<"FragTrap "<< this->name <<" was created!\n";
 }
