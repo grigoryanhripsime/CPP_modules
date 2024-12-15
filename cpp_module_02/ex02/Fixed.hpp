@@ -25,12 +25,14 @@ class Fixed
 		bool operator>=(const Fixed &other) const;
 		bool operator==(const Fixed &other) const;
 		bool operator!=(const Fixed &other) const;
-		Fixed operator+(const Fixed &other) const;
-		Fixed operator-(const Fixed &other) const;
-		Fixed operator*(const Fixed &other) const;
-		Fixed operator/(const Fixed &other) const;
-		Fixed &operator++(); //pre-increment
-		Fixed operator++(int); //post-increment
+		const Fixed operator+(const Fixed &other) const;
+		const Fixed operator-(const Fixed &other) const;
+		const Fixed operator*(const Fixed &other) const;
+		const Fixed operator/(const Fixed &other) const;
+		const Fixed &operator++(); //pre-increment
+		const Fixed operator++(int); //post-increment
+		const Fixed &operator--(); //pre-increment
+		const Fixed operator--(int); //post-increment
 		static Fixed& min(Fixed& first, Fixed& second);
 		static Fixed& min(const Fixed& first, const Fixed& second);
 		static Fixed& max(Fixed& first, Fixed& second);
