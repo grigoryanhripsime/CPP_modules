@@ -2,7 +2,7 @@
 
 DiamondTrap::DiamondTrap() : ClapTrap("Unknown_clap_name"), ScavTrap(), FragTrap(100, 30), name("Unknown")
 {
-	std::cout<<"DiamondTrap "<< this->name <<" was created!\n";
+	std::cout<<"DiamondTrap "<< this->name <<" was created! (default ctor)\n";
 }
 
 DiamondTrap::~DiamondTrap()
@@ -13,16 +13,16 @@ DiamondTrap::~DiamondTrap()
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap(100, 30)
 {
 	this->name = name;
-	std::cout<<"DiamondTrap "<< name <<" was created!\n";
+	std::cout<<"DiamondTrap "<< name <<" was created! (ctor w/params)\n";
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap& diamondtrap) : ClapTrap(diamondtrap), ScavTrap(diamondtrap), FragTrap(diamondtrap)
+DiamondTrap::DiamondTrap(DiamondTrap& diamondtrap)
 {
 	this->name = diamondtrap.name;
 	this->hit_points = diamondtrap.hit_points;
 	this->energy_points = diamondtrap.energy_points;
 	this->attack_damage = diamondtrap.attack_damage;
-	std::cout<<"DiamondTrap "<< this->name <<" was created!\n";
+	std::cout<<"DiamondTrap "<< this->name <<" was created! (copy ctor)\n";
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondtrap)
