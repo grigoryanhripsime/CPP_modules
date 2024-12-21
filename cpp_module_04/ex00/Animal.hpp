@@ -1,5 +1,7 @@
 #pragma once 
 
+#include <iostream>
+
 class Animal
 {
 	protected:
@@ -8,5 +10,8 @@ class Animal
 		Animal();
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &other);
-		~Animal();
+		virtual ~Animal();
+		void setType(std::string type);
+		std::string getType() const;
+		virtual void makeSound() const;
 };
