@@ -35,8 +35,8 @@ void Cat::makeSound() const
 	std::cout<<"Meow\n";
 }
 
-void Cat::setIdeas(int index, std::string idea)
-{
-	if (index >= 0 && index < 100)
-		this -> brain -> ideas[index] = idea;
-}
+// void Cat::setIdeas(int index, std::string idea)
+// {
+// 	if (index >= 0 && index < 100)
+// 		this -> brain -> ideas[index] = idea;
+// }
