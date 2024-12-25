@@ -4,9 +4,9 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPS = main.cpp AMateria.cpp
+CPPS = main.cpp AMateria.cpp Ice.cpp Cure.cpp
 
-HPPS = AMateria.hpp
+HPPS = AMateria.hpp Ice.hpp Cure.hpp
 
 OBJS = $(CPPS:.cpp=.o)
 
