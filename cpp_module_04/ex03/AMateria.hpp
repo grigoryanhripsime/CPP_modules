@@ -5,9 +5,9 @@ class AMateria
 	protected:
 		std::string type;
 	public:
-		AMateria(std::string const &type);
 		//Orthodox
 		AMateria();
+		AMateria(std::string const &type);
 		AMateria(const AMateria &other);
 		AMateria &operator=(const AMateria &other);
 		virtual ~AMateria();
