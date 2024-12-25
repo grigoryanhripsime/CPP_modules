@@ -8,7 +8,7 @@
 #include "MateriaSource.hpp"
 
 
-int main()
+int maina()
 {
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
@@ -25,4 +25,11 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
+	return 0;
+}
+
+int main()
+{
+	maina();
+	system("leaks Interface_recap");
 }
