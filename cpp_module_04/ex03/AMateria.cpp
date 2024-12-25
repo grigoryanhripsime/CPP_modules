@@ -31,6 +31,11 @@ AMateria::~AMateria()
 	std::cout<<"AMateria dtor called!\n";
 }
 
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "AMateria use " << this->getType() << " on " << target.getName() << std::endl;
+}
+
 std::string const &AMateria::getType() const
 {
 	return this -> type;

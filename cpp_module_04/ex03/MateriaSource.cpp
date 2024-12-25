@@ -10,7 +10,8 @@ MateriaSource::MateriaSource()
 MateriaSource::~MateriaSource()
 {
 	std::cout<<"MateriaSource dtor called!\n";
-	delete[](this->slots);
+	for (int i = 0; i < 4; i++)
+		delete this->slots[i];
 }
 
 MateriaSource::MateriaSource(const MateriaSource &other)

@@ -31,12 +31,12 @@ Cure::~Cure()
 	std::cout<<"Cure dtor called!\n";
 }
 
-Ice* Ice::clone() const
+Cure* Cure::clone() const
 {
     return (new Cure());
 }
 
 void Cure::use(ICharacter& target)
 {
-    std::cout<<"* heals "<<target.name<<"\'s wounds *\n";
+    std::cout<<"* heals "<<target.getName()<<"\'s wounds *\n";
 }

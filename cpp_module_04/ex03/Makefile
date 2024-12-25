@@ -1,12 +1,12 @@
-NAME =  Interface_&_recap
+NAME =  Interface_recap
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPS = main.cpp AMateria.cpp Ice.cpp Cure.cpp
+CPPS = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 
-HPPS = AMateria.hpp Ice.hpp Cure.hpp
+HPPS = AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp IMateriaSource.hpp Character.hpp MateriaSource.hpp
 
 OBJS = $(CPPS:.cpp=.o)
 

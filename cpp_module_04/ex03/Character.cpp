@@ -11,7 +11,7 @@ Character::Character()
 Character::Character(std::string name)
 {
 	std::cout<<"Character ctor w/params called!\n";
-	this -> name = other.name;
+	this -> name = name;
 	for (int i = 0; i < 4; i++)
 		this -> slots[i] = NULL;
 }
@@ -19,9 +19,9 @@ Character::Character(std::string name)
 Character::Character(const Character &other)
 {
 	std::cout<<"Character copy ctor called!\n";
-	this -> name = other.name;
+	this -> name = other.getName();
 	for (int i = 0; i < 4; i++)
-		this -> slots[i] = other.slots[i];
+		this -> slots[i] = other.slots[i]->clone();
 }
 
 Character &Character::operator=(const Character &other)
@@ -29,17 +29,20 @@ Character &Character::operator=(const Character &other)
 	if (this == &other)
 		return *this;
 	std::cout<<"Character copy assignment operator called!\n";
-	delete[](this ->slots);
-	this -> name = other.name;
+	this -> name = other.getName();
 	for (int i = 0; i < 4; i++)
-		this -> slots[i] = other.slots[i];
+	{
+		delete this -> slots[i];
+		this -> slots[i] = other.slots[i]->clone();
+	}
 	return *this;
 }
 
 Character::~Character()
 {
 	std::cout<<"Character dtor called!\n";
-	delete[] (this -> slots);
+	for (int i = 0; i < 4; i++)
+		delete this->slots[i];
 }
 
 std::string const &Character::getName() const
@@ -69,7 +72,7 @@ void Character::unequip(int idx)
 	std::cout<<"There is no materia!\n";
 }
 
-void Character::use(int idx, Character& target)
+void Character::use(int idx, ICharacter& target)
 {
 	if (this -> slots[idx])
 		this->slots[idx]->use(target);
