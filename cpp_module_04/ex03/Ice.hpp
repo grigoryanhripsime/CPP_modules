@@ -1,5 +1,7 @@
 #pragma once
 
+#include "AMateria.hpp"
+
 class Ice : public AMateria
 {
 	public:
@@ -8,4 +10,6 @@ class Ice : public AMateria
 		Ice(const Ice &other);
 		Ice &operator=(const Ice &other);
 		~Ice();
-}
+
+		virtual Ice* clone() const;
+};
