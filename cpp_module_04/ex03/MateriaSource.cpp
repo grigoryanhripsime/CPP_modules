@@ -18,7 +18,12 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 {
 	std::cout<<"MateriaSource copy ctor called!\n";
 	for (int i = 0; i < 4; i++)
-		this -> slots[i] = other.slots[i]->clone();
+	{
+		if (other.slots[i])
+			this -> slots[i] = other.slots[i]->clone();
+		else
+			this -> slots[i] = NULL;
+	}
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &other)
@@ -29,7 +34,10 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 	for (int i = 0; i < 4; i++)
 	{
 		delete this->slots[i];
-		this -> slots[i] = other.slots[i]->clone();
+		if (other.slots[i])
+			this -> slots[i] = other.slots[i]->clone();
+		else
+			this -> slots[i] = NULL;
 	}
 	return *this;
 }

@@ -16,7 +16,7 @@ Dog::~Dog()
 Dog::Dog(const Dog &other) : Animal(other)
 {
 	std::cout<<"Dog copy ctor called!\n";
-	this -> type = other.type;
+	// this -> type = other.type;
 	this -> brain = new Brain(*other.brain);
 }
 

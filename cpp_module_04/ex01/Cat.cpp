@@ -15,7 +15,7 @@ Cat::~Cat()
 
 Cat::Cat(const Cat &other) : Animal(other)
 {
-	this -> type = other.type;
+	// this -> type = other.type;
 	this -> brain = new Brain(*other.brain);
 	std::cout<<"Cat copy ctor called!\n";
 }
