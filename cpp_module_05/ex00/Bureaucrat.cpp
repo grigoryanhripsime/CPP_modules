@@ -79,6 +79,6 @@ void Bureaucrat::gradeDecrement()
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& ob)
 {
-	std::cout<<"Bureaucrat named "<<ob.getName()<<" has "<< ob.getGrade()<< " grade!\n";
+	std::cout<<ob.getName()<<", bureaucrat grade "<< ob.getGrade()<<std::endl;
 	return (os);
 }
