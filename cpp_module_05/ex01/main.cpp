@@ -1,38 +1,12 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
-    try
-    {
-        Bureaucrat ob("Bob", 55);
-        Bureaucrat ob2;
-        std::cout<<ob2;
-        ob2 = ob;
-        std::cout<<ob2;
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeIncrement();
-        ob2.gradeDecrement();
-        ob2.gradeDecrement();
-        ob2.gradeDecrement();
-        std::cout<<ob2;
-        std::cout<<ob;
-    }
-    catch(Bureaucrat::GradeTooHighException &e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    catch(Bureaucrat::GradeTooLowException &e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    Bureaucrat bureaucrat("John", 75);
+
+    Form form("form1", 0, 100, 110);
+    Form form1(form);
+    bureaucrat.signForm(form);
+    bureaucrat.signForm(form1);
 }

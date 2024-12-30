@@ -82,3 +82,21 @@ std::ostream&	operator<<(std::ostream& os, const Bureaucrat& ob)
 	std::cout<<ob.getName()<<", bureaucrat grade "<< ob.getGrade()<<std::endl;
 	return (os);
 }
+
+void Bureaucrat::signForm(const Form &ob) const
+{
+    try
+    {
+        if (ob.getIs_signed())
+        {
+            std::cout<<this->getName()<<" coudn't sign "<<ob.getName()<<" because the form is already signed!"<<std::endl;
+            return ;
+        }
+        ob.beSigned(*this);
+        std::cout<<this->getName()<<" signed "<<ob.getName()<<std::endl;
+    }
+    catch(std::exception& e)
+    {
+        std::cout<<this->getName()<<" coudn't sign "<<ob.getName()<<" because "<< e.what()<<std::endl;
+    }
+}
