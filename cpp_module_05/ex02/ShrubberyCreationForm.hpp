@@ -13,5 +13,10 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm(const ShrubberyCreationForm &other);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 		~ShrubberyCreationForm();
+		class FileOpenningException : public std::exception
+		{
+			public:
+                const char* what() const throw();
+		}
 		void execute(Bureaucrat const &executor) const;
 };

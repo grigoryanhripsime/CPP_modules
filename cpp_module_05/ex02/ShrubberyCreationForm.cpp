@@ -37,12 +37,17 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout<<"ShrubberyCreationForm dtor called!\n";
 }
 
+const char* ShrubberyCreationForm::FileOpenningException::what() const throw()
+{
+	return "Error occured while file openning!\n";
+}
+
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	AForm::execute(executor);
-	std::ofstream out_file((target + ">_shrubbery").c_str());
+	std::ofstream out_file((target + "_shrubbery").c_str());
 	if (!out_file)
-		throw std::exception();
+		throw ShrubberyCreationForm::FileOpenningException();
 	out_file
  <<"          @\n"
  <<"     @ @ @  @ @ @\n"
