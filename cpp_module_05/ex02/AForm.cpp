@@ -81,9 +81,21 @@ std::ostream&	operator<<(std::ostream& os, const AForm& ob)
 
 void AForm::beSigned(const Bureaucrat &ob) const
 {
-    if (ob.getGrade() <= this->grade_to_sign)
-        const_cast <AForm*> (this)->is_signed = 1;
-    else
+    if (ob.getGrade() > this->grade_to_sign)
         throw GradeTooLowException();
+    const_cast <AForm*> (this)->is_signed = 1;
+}
+
+const char* AForm::IsSignedException::what() const throw()
+{
+    return "The form is not signed!";
+}
+
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (!this->is_signed)
+		throw AForm::IsSignedException();
+	if (executor.getGrade() > this->grade_to_execute)
+		throw Bureaucrat::GradeTooLowException();
 }
 

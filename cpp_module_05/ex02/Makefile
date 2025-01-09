@@ -4,9 +4,9 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-CPPS = main.cpp Bureaucrat.cpp AForm.cpp
+CPPS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
-HPPS = Bureaucrat.hpp AForm.hpp
+HPPS = Bureaucrat.hpp AForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
 
 OBJS = $(CPPS:.cpp=.o)
 

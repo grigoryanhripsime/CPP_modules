@@ -1,26 +1,31 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery", 0, 145, 137), target("Default")
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreation", 0, 145, 137), target("Default")
+{
+	std::cout<<"ShrubberyCreationForm default ctor called!\n";
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("ShrubberyCreation", 0, 145, 137), target(target)
 {
 	std::cout<<"ShrubberyCreationForm default ctor called!\n";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other), target(other.target)
 {
-	if (other.grade_to_sign > 145)
+	if (other.getGrade_to_sign() > 145)
 		throw GradeTooLowException();
-	if (other.grade_to_execute > 145)
+	if (other.getGrade_to_execute() > 137)
 		throw GradeTooLowException();
 	std::cout<<"ShrubberyCreationForm copy ctor called!\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
 	if (this == &other)
 		return *this;
-	if (other.grade_to_sign > 145)
+	if (other.getGrade_to_sign() > 145)
 		throw GradeTooLowException();
-	if (other.grade_to_execute > 145)
+	if (other.getGrade_to_execute() > 137)
 		throw GradeTooLowException();
 	AForm::operator=(other);
 	std::cout<<"ShrubberyCreationForm copy assignment operator called!\n";
@@ -34,9 +39,25 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	std::ofstream out_file(target + (std::string)">_shrubbery");
+	AForm::execute(executor);
+	std::ofstream out_file((target + ">_shrubbery").c_str());
 	if (!out_file)
-		throw Exception("File coudn't be opened!\n");
-	out_file<<"ASCII tree\n";
+		throw std::exception();
+	out_file
+ <<"          @\n"
+ <<"     @ @ @  @ @ @\n"
+ <<"   @  @\\/@ @ /__@\n"
+ <<"   @@@ @\\ / @/  @ @\n"
+ <<"  @\\  \\/@| @ | @\n"
+ <<" @__\\@ \\ |/ \\| / @\n"
+ <<"    __\\|@|  ||/__/@\n"
+ <<"   /  \\ \\  / /__\n"
+ <<"  @    \\  \\/ /   @\n"
+ <<"        |\" '|\n"
+ <<"        |\"  |\n"
+ <<"        |\"  |\n"
+ <<"       ~|\"  |~\n"
+ <<"   ~~~~       ~~~~\n"
+ <<" ~~               ~~~\n";
 	out_file.close();
 }

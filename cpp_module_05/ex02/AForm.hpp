@@ -40,7 +40,13 @@ class AForm
 
         void beSigned(const Bureaucrat &ob) const;
 
-		void execute(Bureaucrat const &executor) const = 0;
+		virtual void execute(Bureaucrat const &executor) const = 0;
+
+		class IsSignedException : public std::exception 
+        {
+            public:
+                const char* what() const throw();
+        };
 };
 
 std::ostream&	operator<<(std::ostream& os, const AForm& ob);

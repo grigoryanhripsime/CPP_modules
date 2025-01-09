@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : name("Unknown"), grade(150)
 {
@@ -83,7 +83,7 @@ std::ostream&	operator<<(std::ostream& os, const Bureaucrat& ob)
 	return (os);
 }
 
-void Bureaucrat::signForm(const Form &ob) const
+void Bureaucrat::signForm(const AForm &ob) const
 {
     try
     {
@@ -100,3 +100,10 @@ void Bureaucrat::signForm(const Form &ob) const
         std::cout<<this->getName()<<" coudn't sign "<<ob.getName()<<" because "<< e.what()<<std::endl;
     }
 }
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+	form.execute(*this);
+	std::cout<<"Bureaucrat named "<<this->name<<" executed the form named "<<form.getName()<<std::endl;
+}
+
