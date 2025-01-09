@@ -9,4 +9,6 @@ int main()
     Form form1(form);
     bureaucrat.signForm(form);
     bureaucrat.signForm(form1);
+	std::cout<<bureaucrat;
+	std::cout<<form1;
 }
