@@ -5,7 +5,7 @@ AForm::AForm() : name("Unknown"), is_signed(0), grade_to_sign(150), grade_to_exe
     std::cout<<"AForm default ctor called!\n";
 }
 
-AForm::AForm(const std::string name, const bool is_signed, const int grade_to_sign, const int grade_to_execute) : name(name), is_signed(is_signed), grade_to_sign(grade_to_sign), grade_to_execute(grade_to_execute)
+AForm::AForm(const std::string &name, const bool is_signed, const int grade_to_sign, const int grade_to_execute) : name(name), is_signed(is_signed), grade_to_sign(grade_to_sign), grade_to_execute(grade_to_execute)
 {
 	if (grade_to_sign > 150)
 		throw GradeTooLowException();
@@ -50,7 +50,7 @@ const char* AForm::GradeTooLowException::what() const throw()
     return "Grade is too low!";
 }
 
-const std::string AForm::getName() const
+std::string AForm::getName() const
 {
     return this->name;
 }

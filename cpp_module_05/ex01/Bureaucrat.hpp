@@ -28,7 +28,7 @@ class Bureaucrat
                 const char* what() const throw();
         };
 
-        const std::string getName() const;
+        std::string getName() const;
         int getGrade() const;
 
         void gradeIncrement();

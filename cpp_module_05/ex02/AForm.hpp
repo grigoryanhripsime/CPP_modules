@@ -15,7 +15,7 @@ class AForm
     public:
         //Orthodox
         AForm();
-        AForm(const std::string name, const bool is_signed, const int grade_to_sign, const int grade_to_execute);
+        AForm(const std::string &name, const bool is_signed, const int grade_to_sign, const int grade_to_execute);
         AForm(const AForm &other);
         AForm &operator=(const AForm &other);
         virtual ~AForm();
@@ -33,7 +33,7 @@ class AForm
         };
 
         //Getters
-        const std::string getName() const;
+        std::string getName() const;
         bool getIs_signed() const;
         int getGrade_to_sign() const;
         int getGrade_to_execute() const;

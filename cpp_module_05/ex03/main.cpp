@@ -12,4 +12,5 @@ int main()
 	AForm *form = intern.makeForm("RobotomyRequest", "robot");
 	ob.signForm(*form);
 	ob.executeForm(*form);
+	delete (form);
 }

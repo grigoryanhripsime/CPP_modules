@@ -15,7 +15,7 @@ class Form
     public:
         //Orthodox
         Form();
-        Form(const std::string name, const bool is_signed, const int grade_to_sign, const int grade_to_execute);
+        Form(const std::string &name, const bool is_signed, const int grade_to_sign, const int grade_to_execute);
         Form(const Form &other);
         Form &operator=(const Form &other);
         ~Form();
@@ -33,7 +33,7 @@ class Form
         };
 
         //Getters
-        const std::string getName() const;
+        std::string getName() const;
         bool getIs_signed() const;
         int getGrade_to_sign() const;
         int getGrade_to_execute() const;
