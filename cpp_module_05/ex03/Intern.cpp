@@ -32,8 +32,8 @@ AForm *Intern::makeForm(std::string name, std::string target)
 {
 	std::string arr[] = {"PresidentialPardon", "RobotomyRequest", "ShrubberyCreation"};
 	int i = 0;	
-	while (i < 3 && name == arr[i++])
-		break ;
+	while (i < 3 && name != arr[i])
+		i++;
 	if (i < 3)
 		std::cout<<"Intern creates "<<name<<std::endl;
 	else
