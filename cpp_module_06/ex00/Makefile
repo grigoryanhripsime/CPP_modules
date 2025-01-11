@@ -2,7 +2,7 @@ NAME = Conversion_of_scalar_types
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
 CPPS = main.cpp ScalarConverter.cpp
 
