@@ -30,14 +30,14 @@ std::string find_type(const std::string &str)
 {
 	if (str.length() == 1 && ((str[0] >= 32 && str[0] < '0') || (str[0] > '9' && str[0] <= 126)))
 		return "char";
-	for (size_t i = 0; i < str.length(); i++)
+	size_t i = 0;
+	if (str[i] == '-')
+		i++;
+	for (; i < str.length(); i++)
 	{
-		if (!(str[i] >= '0' && str[i] <= '9') && !(str[i] >= 9 && str[i] <= 13)
-				&& str[i] != 'f' && str[i] != '.' && str[i] != '-' && str[i] != ' ')
+		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != 'f' && str[i] != '.')
 			return "invalid";
 	}
-	// if (str.find("-") != 0 && str.find("-", 1) != std::string::npos) // mi hat imaci chi kara lini "    -1"
-	// 	return "invalid";
 	if (str.find(".") != std::string::npos && str.find(".", str.find(".") + 1) == std::string::npos)
 	{
 		size_t f_index = str.find("f");
@@ -61,7 +61,7 @@ void it_is_char(const std::string &str)
 
 void it_is_int(const std::string &str)
 {
-    int num;
+    long long num;
     std::stringstream ss(str);
     ss >> num;
     if (ss.fail())
@@ -71,7 +71,10 @@ void it_is_int(const std::string &str)
     else
         std::cout << "char: " << static_cast<char>(num) << std::endl;
     std::cout << std::fixed << std::setprecision(1);
-    std::cout << "int: " << num << std::endl;
+	if (num < -2147483648 || num > 2147483647)
+		std::cout << "int: impossible" << std::endl;
+	else
+    	std::cout << "int: " << num << std::endl;
     std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
     std::cout << "double: " << static_cast<double>(num) << std::endl;
 }
@@ -88,7 +91,10 @@ void it_is_float(const std::string &str)
 	else
 		std::cout<<"char: "<<static_cast<char>(num)<<std::endl;
     std::cout << std::fixed << std::setprecision(str.length() - str.find(".") - 2);
-	std::cout<<"int: "<<static_cast<int>(num)<<std::endl;
+	if (num > 2147483647 || num < -2147483648)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout<<"int: "<<static_cast<int>(num)<<std::endl;
 	std::cout<<"float: "<<num<<"f"<<std::endl;
 	std::cout<<"double: "<<static_cast<double>(num)<<std::endl;
 }
@@ -105,7 +111,10 @@ void it_is_double(const std::string &str)
 	else
 		std::cout<<"char: "<<static_cast<char>(num)<<std::endl;
     std::cout << std::fixed << std::setprecision(str.length() - str.find(".") - 1);
-	std::cout<<"int: "<<static_cast<int>(num)<<std::endl;
+	if (num > 2147483647 || num < -2147483648)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout<<"int: "<<static_cast<int>(num)<<std::endl;
 	std::cout<<"float: "<<static_cast<float>(num)<<"f"<<std::endl;
 	std::cout<<"double: "<<num<<std::endl;
 }
@@ -167,7 +176,7 @@ void ScalarConverter::convert(const std::string &str)
 	{
 		std::cout<<"char: "<<"impossible"<<std::endl;
 		std::cout<<"int: "<<"impossible"<<std::endl;
-		std::cout<<"float: "<<"impossible"<<std::endl;
-		std::cout<<"double: "<<"impossible"<<std::endl;
+		std::cout<<"float: "<<"nan"<<std::endl;
+		std::cout<<"double: "<<"nanf"<<std::endl;
 	}
 }
