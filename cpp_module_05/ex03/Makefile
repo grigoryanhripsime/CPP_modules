@@ -1,4 +1,4 @@
-NAME =  Form_up_maggots
+NAME =   At_least_this_beats_coffee_making
 
 CC = c++
 
