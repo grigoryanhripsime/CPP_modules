@@ -25,11 +25,13 @@ Serializer::~Serializer()
 
 uintptr_t Serializer::serialize(Data* ptr)
 {
+	std::cout<<"Data * to unitptr_t cast called!\n";
     return reinterpret_cast<uintptr_t>(ptr);
 }
 
 Data* Serializer::deserialize(uintptr_t raw)
 {
+	std::cout<<"unitptr_t to Data * cast called!\n";
     return reinterpret_cast<Data *>(raw);
 }
 

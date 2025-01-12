@@ -4,5 +4,5 @@
 
 struct Data
 {
-    uintptr_t mi_ban;
+    std::string inch_vor_ban;
 };

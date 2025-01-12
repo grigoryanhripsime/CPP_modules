@@ -2,11 +2,11 @@ NAME = Serialization
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CPPS = main.cpp Serializer.cpp
 
-HPPS = Serializer.hpp
+HPPS = Serializer.hpp Data.hpp
 
 OBJS = $(CPPS:.cpp=.o)
 
