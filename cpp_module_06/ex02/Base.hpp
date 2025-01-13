@@ -1,11 +1,19 @@
 #pragma once
 
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+
+class A;
+class B;
+class C;
+
 class Base
 {
-	private:
-		Base();
-		Base(const Base &other);
-		Base &operator=(const Base &other);
 	public:
 		virtual ~Base();
 		Base *generate(void);

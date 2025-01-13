@@ -1,22 +1,40 @@
 #include "Base.hpp"
 
-Base::Base()
+Base::~Base()
 {
-	std::cout<<"Base default ctor called!\n";
+	std::cout<<"Base dtor called!\n";
 }
 
-Base::Base(const Base &other)
+Base *Base::generate(void)
 {
-	std::cout<<"Base copy ctor called!\n";
-	*this = other;
+	std::srand(std::time(0));
+    int random_choice = (std::rand() % 3);
+
+	switch(random_choice)
+	{
+		case 0:
+			return new A;
+		case 1:
+			return new B;
+		case 2:
+			return new C;
+	}
 }
 
-Base &Base::operator=(const Base &other)
+void Base::identify(Base* p)
 {
-	if (this == &other)
-		return *this;
-	std::cout<<"Base copy assignment operator called!\n";
-	return *this;
+	if (dynamic_cast<A*>(p))
+		std::cout<<"A\n";
+	else if (dynamic_cast<B*>(p))
+		std::cout<<"B\n";
+	else if (dynamic_cast<C*>(p))
+		std::cout<<"C\n";
+	else
+		std::cout<<"Not defined!\n";
 }
 
+void Base::identify(Base& p)
+{
+	
+}
 
