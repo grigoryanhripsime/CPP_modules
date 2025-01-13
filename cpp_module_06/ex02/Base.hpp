@@ -4,14 +4,6 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
-
-class A;
-class B;
-class C;
-
 class Base
 {
 	public:
@@ -20,3 +12,7 @@ class Base
 		void identify(Base* p);
 		void identify(Base& p);
 };
+
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};

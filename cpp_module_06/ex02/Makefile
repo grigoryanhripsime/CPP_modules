@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CPPS = main.cpp Base.cpp
 
-HPPS = Base.cpp A.hpp B.hpp C.hpp
+HPPS = Base.hpp
 
 OBJS = $(CPPS:.cpp=.o)
 

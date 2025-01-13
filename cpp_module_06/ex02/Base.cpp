@@ -19,6 +19,7 @@ Base *Base::generate(void)
 		case 2:
 			return new C;
 	}
+	return (NULL);
 }
 
 void Base::identify(Base* p)
@@ -35,6 +36,23 @@ void Base::identify(Base* p)
 
 void Base::identify(Base& p)
 {
-	
+	try
+	{
+		(void)dynamic_cast<A &>(p);
+		std::cout<<"A\n";
+		return ;
+	} catch(std::exception &e) {}
+	try
+	{
+		(void)dynamic_cast<B &>(p);
+		std::cout<<"B\n";
+		return ;
+	} catch(std::exception &e) {}
+	try
+	{
+		(void)dynamic_cast<Base &>(p);
+		std::cout<<"B\n";
+		return ;
+	} catch(std::exception &e) {}
 }
 
