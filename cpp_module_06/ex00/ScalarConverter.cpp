@@ -70,18 +70,17 @@ void it_is_int(const std::string &str)
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: " << static_cast<char>(num) << std::endl;
-    std::cout << std::fixed << std::setprecision(1);
 	if (num < -2147483648 || num > 2147483647)
 		std::cout << "int: impossible" << std::endl;
 	else
     	std::cout << "int: " << num << std::endl;
-    std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
-    std::cout << "double: " << static_cast<double>(num) << std::endl;
+	std::cout<<"float: "<<static_cast<float>(num)<<".0f"<<std::endl;
+    std::cout << "double: " << static_cast<double>(num)<<".0"<<std::endl;
 }
 
 void it_is_float(const std::string &str)
 {
-	float num;
+	double num;
 	std::stringstream ss(str);
 	ss >> num;
 	if (ss.fail())
@@ -90,12 +89,11 @@ void it_is_float(const std::string &str)
 		std::cout<<"char: Non displayable"<<std::endl;
 	else
 		std::cout<<"char: "<<static_cast<char>(num)<<std::endl;
-    std::cout << std::fixed << std::setprecision(str.length() - str.find(".") - 2);
 	if (num > 2147483647 || num < -2147483648)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout<<"int: "<<static_cast<int>(num)<<std::endl;
-	std::cout<<"float: "<<num<<"f"<<std::endl;
+	std::cout<<"float: "<<static_cast<float>(num)<<"f"<<std::endl;
 	std::cout<<"double: "<<static_cast<double>(num)<<std::endl;
 }
 
@@ -110,7 +108,6 @@ void it_is_double(const std::string &str)
 		std::cout<<"char: Non displayable"<<std::endl;
 	else
 		std::cout<<"char: "<<static_cast<char>(num)<<std::endl;
-    std::cout << std::fixed << std::setprecision(str.length() - str.find(".") - 1);
 	if (num > 2147483647 || num < -2147483648)
 		std::cout << "int: impossible" << std::endl;
 	else
