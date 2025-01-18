@@ -4,7 +4,7 @@ template <typename T>
 Array<T>::Array()
 {
     std::cout<<"Array default ctor called!\n";
-    this->arr = new T[];
+    this->arr = NULL;
 }
 
 template <typename T>
@@ -46,11 +46,14 @@ unsigned int Array<T>::size() const
 template <typename T>
 T &Array<T>::operator[](int idx) const
 {
+	if (idx < 0 || static_cast<unsigned int>(idx) >= this->n)
+		throw std::exception();
     return arr[idx];
 }
 
 template <typename T>
 Array<T>::~Array()
 {
+	std::cout<<"Array dtor called!\n";
     delete[] this->arr;
 }
