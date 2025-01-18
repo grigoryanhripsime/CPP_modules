@@ -4,14 +4,14 @@
 #include <iostream>
 
 template <typename T>
-void swap(const T &a, const T &b)
+void swap(T &a, T &b)
 {
-    const T c = a;
-    const_cast<T &>(a) = b;
-    const_cast<T &>(b) = c;
+    T c = a;
+    a = b;
+    b = c;
 }
 template <typename T>
-const T &min(const T &a, const T &b)
+T &min(T &a, T &b)
 {
     if (a > b)
         return b;
@@ -20,7 +20,7 @@ const T &min(const T &a, const T &b)
 }
 
 template <typename T>
-const T &max(const T &a, const T &b)
+T &max(T &a, T &b)
 {
     if (a < b)
         return b;
