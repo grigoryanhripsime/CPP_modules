@@ -1,5 +1,3 @@
-#include <iostream>
-#include <deque>
 #include <easyfind.hpp>
 
 int main() {
