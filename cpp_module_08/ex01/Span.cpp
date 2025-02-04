@@ -94,4 +94,3 @@ void Span::fill() const
     for (unsigned int i = this->arr.size(); i < this->N; i++)
         this->addNumber(std::rand());
 }
-
