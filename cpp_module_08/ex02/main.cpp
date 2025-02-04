@@ -13,6 +13,14 @@ int main()
 		++it;
 	}
 	std::cout<<std::endl;
+
+	MutantStack<int>::iterator it2 = mutant.begin();
+	while (it2 != mutant.end())
+	{
+		std::cout<<*it2<<" ";
+		++it2;
+	}
+	std::cout<<std::endl;
 }
 
 // int main()

@@ -3,27 +3,27 @@
 template <typename T, typename Container>
 MutantStack<T, Container>::MutantStack() : std::stack<T, Container>()
 {
-	std::cout << "MutantStack def ctor called!\n";
+	// std::cout << "MutantStack def ctor called!\n";
 }
 
 template <typename T, typename Container>
 MutantStack<T, Container>::MutantStack(const MutantStack &other) : std::stack<T, Container>(other)
 {
-	std::cout << "MutantStack copy ctor called!\n";
+	// std::cout << "MutantStack copy ctor called!\n";
 }
 
 template <typename T, typename Container>
 MutantStack<T, Container> &MutantStack<T, Container>::operator=(const MutantStack &other)
 {
 	std::stack<T, Container>::operator=(other);
-	std::cout << "MutantStack copy assignment operator called!\n";
+	// std::cout << "MutantStack copy assignment operator called!\n";
 	return *this;
 }
 
 template <typename T, typename Container>
 MutantStack<T, Container>::~MutantStack()
 {
-	std::cout << "MutantStack dtor called!\n";
+	// std::cout << "MutantStack dtor called!\n";
 }
 
 template <typename T, typename Container>
