@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <vector>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -12,6 +13,7 @@ class BitcoinExchange
         std::map<std::string, double> data;
         std::map<std::string, double> input;
     public:
+        bool valid_date(std::string date);
         void processingData();
         void exchange(std::ifstream &input);
 
