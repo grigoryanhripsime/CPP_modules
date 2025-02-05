@@ -50,25 +50,40 @@ void BitcoinExchange::exchange(std::ifstream &input)
         throw std::runtime_error("Invid file");
     while (std::getline(input, line))
     {
+		if (line.empty())
+			continue ;
 		if (line.size() < 14 || !(line[10] == ' ' && line[11] == '|' && line[12] == ' ' && line[13] != ' '))
 		{
             std::cout<<"Error: bad input => "<<line<<std::endl;
 			continue ;
 		}
-        std::cout<<line<<std::endl;
         if (!valid_date(line.substr(0, 10)))
         {
             std::cout<<"Error: invalid date format => "<<line.substr(0, line.find('|'))<<std::endl;
             continue ;
         }
+		double value = valid_value(line.substr(13));
+		if (value < 0)
+            continue ;
+		std::map<std::string, double>::iterator found = this->data.find(line.substr(0, 10));
+		if (found == data.end())
+		{
+			found = this->data.lower_bound(line.substr(0, 10));
+			if (found-- == data.end())
+			{
+				std::cout<<"Error: price wasn't found"<<std::endl;
+            	continue ;
+			}
+		}
+		std::cout<<line.substr(0, 10)<<"=>"<<value<<"="<<value*found->second<<std::endl;
     }
 }
 
-bool BitcoinExchange::valid_date(std::string date)
+bool BitcoinExchange::valid_date(std::string date) 
 {
     if (date.size() != 10)
         return false;
-		
+
     int year, month, day;
     char dash1, dash2;
     std::stringstream ss(date);
@@ -89,4 +104,25 @@ bool BitcoinExchange::valid_date(std::string date)
 			return day <= 30;
 	}
 	return true;
+}
+
+double BitcoinExchange::valid_value(std::string value_s)
+{
+	std::stringstream ss(value_s);
+	double value;
+	ss >> value;
+	if (ss.str().find_first_not_of("-0123456789.") != std::string::npos
+		|| ss.str().find(".") != ss.str().rfind(".")
+		|| (ss.str().rfind("-") != std::string::npos && ss.str().rfind("-") != 0)
+		|| ss.fail() || value < 0 || value > 1000)
+	{
+		if (value < 0)
+			std::cout<<"Error: not a positive number."<<std::endl;
+		else if (value > 1000)
+			std::cout<<"Error: too large a number."<<std::endl;
+		else
+			std::cout<<"Error: invalid value format => "<<ss.str()<<std::endl;
+		return -1;
+	}
+	return value;
 }
