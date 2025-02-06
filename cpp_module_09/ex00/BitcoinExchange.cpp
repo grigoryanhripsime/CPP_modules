@@ -3,14 +3,14 @@
 BitcoinExchange::BitcoinExchange() : data_file("data.csv")
 {
     this->processingData();
-    std::cout<<"BitcoinExchange default ctor called!\n";
+    // std::cout<<"BitcoinExchange default ctor called!\n";
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 {
     this->data = other.data;
     this->input = other.input;
-    std::cout<<"BitcoinExchange copy ctor called!\n";
+    // std::cout<<"BitcoinExchange copy ctor called!\n";
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
@@ -19,14 +19,14 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
         return *this;
     this->data = other.data;
     this->input = other.input;
-    std::cout<<"BitcoinExchange copy assignment operator called!\n";
+    // std::cout<<"BitcoinExchange copy assignment operator called!\n";
     return *this;
 }
 
 BitcoinExchange::~BitcoinExchange()
 {
     this->data_file.close();
-    std::cout<<"BitcoinExchange dtor called!\n";
+    // std::cout<<"BitcoinExchange dtor called!\n";
 }
 
 void BitcoinExchange::processingData()
