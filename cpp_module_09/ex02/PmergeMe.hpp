@@ -4,6 +4,7 @@
 #include <deque>
 #include <iostream>
 #include <sstream>
+#include <ctime>
 
 template <typename T>
 class PmergeMe

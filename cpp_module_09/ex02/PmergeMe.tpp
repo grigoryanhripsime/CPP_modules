@@ -1,33 +1,32 @@
-
 #include <PmergeMe.hpp>
-using std::cout;
-using std::endl;
 
 template <typename T>
 PmergeMe<T>::PmergeMe()
 {
-	std::cout<<"PmergeMe default ctor called!\n";
+	// std::cout<<"PmergeMe default ctor called!\n";
 }
 
 template <typename T>
 PmergeMe<T>::PmergeMe(const PmergeMe<T> &other)
 {
-	(void) other;
-	std::cout<<"PmergeMe copy ctor called!\n";
+	this -> arr = other.arr;
+	// std::cout<<"PmergeMe copy ctor called!\n";
 }
 
 template <typename T>
 PmergeMe<T> &PmergeMe<T>::operator=(const PmergeMe<T> &other)
 {
-	(void) other;
-	std::cout<<"PmergeMe copy assignment operator called!\n";
+	if (this == &other)
+		return *this;
+	this -> arr = other.arr;
+	// std::cout<<"PmergeMe copy assignment operator called!\n";
 	return *this;
 }
 
 template <typename T>
 PmergeMe<T>::~PmergeMe()
 {
-	std::cout<<"PmergeMe dtor called!\n";
+	// std::cout<<"PmergeMe dtor called!\n";
 }
 
 template <typename T>
@@ -37,7 +36,7 @@ void PmergeMe<T>::fill(int argc, char *argv[])
 	{
 		std::stringstream ss(argv[i]);
 		long long ii;
-		if (ss.str().size() > 10 || ss.str().find_first_not_of("0123456789") != std::string::npos)
+		if (ss.str().size() > 10 || ss.str().find_first_not_of(" +0123456789") != std::string::npos || (ss.str().find('+') != std::string::npos && ss.str().find('+') != 0))
 			throw std::runtime_error("Invalid iput");
 		ss >> ii;
 		if (ii > 2147483647)
@@ -54,9 +53,6 @@ void PmergeMe<T>::print()
 		std::cout<<" "<<arr[i];
 	std::cout<<std::endl;
 }
-
-
-
 
 template <typename T>
 T binary_search(T big, T small)
@@ -102,12 +98,7 @@ T rec(T curr)
 			small.push_back(curr[i]);
 		}
 	}
-			std::cout<<"_________________________\n";
-		for (size_t i = 0; i < big.size(); i++)
-			std::cout<<" "<<big[i];
-		std::cout<<std::endl;
-		std::cout<<"_________________________\n";
-		// std::cout<<big.size()<<std::endl;
+
 	return binary_search(rec(big), small);
 }
 
@@ -115,6 +106,5 @@ template <typename T>
 void PmergeMe<T>::sort()
 {
 	arr = rec(arr);
-	
 }
 
