@@ -1,36 +1,33 @@
 #include <PmergeMe.hpp>
 
-template <typename T>
-PmergeMe<T>::PmergeMe()
+PmergeMe::PmergeMe()
 {
 	// std::cout<<"PmergeMe default ctor called!\n";
 }
 
-template <typename T>
-PmergeMe<T>::PmergeMe(const PmergeMe<T> &other)
+PmergeMe::PmergeMe(const PmergeMe &other)
 {
-	this -> arr = other.arr;
+	this -> arr_d = other.arr_d;
+	this -> arr_v = other.arr_v;
 	// std::cout<<"PmergeMe copy ctor called!\n";
 }
 
-template <typename T>
-PmergeMe<T> &PmergeMe<T>::operator=(const PmergeMe<T> &other)
+PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
 	if (this == &other)
 		return *this;
-	this -> arr = other.arr;
+	this -> arr_d = other.arr_d;
+	this -> arr_v = other.arr_v;
 	// std::cout<<"PmergeMe copy assignment operator called!\n";
 	return *this;
 }
 
-template <typename T>
-PmergeMe<T>::~PmergeMe()
+PmergeMe::~PmergeMe()
 {
 	// std::cout<<"PmergeMe dtor called!\n";
 }
 
-template <typename T>
-void PmergeMe<T>::fill(int argc, char *argv[])
+void PmergeMe::fill(int argc, char *argv[])
 {
 	for (int i = 1; i < argc; i++)
 	{
@@ -43,19 +40,18 @@ void PmergeMe<T>::fill(int argc, char *argv[])
 		ss >> ii;
 		if (ii > 2147483647)
 			throw std::runtime_error("Number is bigger than INT_MAX");
-		arr.push_back(ii);
+		arr_v.push_back(ii);
+		arr_d.push_back(ii);
 	}
 }
-
-template <typename T>
-void PmergeMe<T>::print()
+void PmergeMe::print()
 {
 	// if (is_sorted(arr.begin(), arr.end()))
     //     std::cout << "Sorted"<<std::endl;
     // else
     //     std::cout << "Not Sorted"<<std::endl;
-	for (size_t i = 0; i < arr.size(); i++)
-		std::cout<<" "<<arr[i];
+	for (size_t i = 0; i < arr_v.size(); i++)
+		std::cout<<" "<<arr_v[i];
 	std::cout<<std::endl;
 }
 
@@ -111,9 +107,28 @@ T rec(T curr)
 	return binary_search(rec(big), small);
 }
 
-template <typename T>
-void PmergeMe<T>::sort()
+void PmergeMe::sort(int argc, char *argv[])
 {
-	arr = rec(arr);
+	clock_t start, end;
+    double deque_time;
+	double vector_time;
+
+	this->fill(argc, argv);
+	std::cout<<"Before: ";
+	this->print();
+	start = clock();
+	this->arr_v = rec(this->arr_v);
+	end = clock();
+	vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+
+	std::cout<<"After: ";
+	this->print();
+
+	start = clock();
+	this->arr_d = rec(this->arr_d);
+	end = clock();
+	deque_time = static_cast<double>(end - start)  / CLOCKS_PER_SEC;
+	std::cout<<"Time to process a range of 5 elements with std::vector : "<<vector_time<<" us\n";
+	std::cout<<"Time to process a range of 5 elements with std::deque : "<<deque_time<<" us\n";
 }
 

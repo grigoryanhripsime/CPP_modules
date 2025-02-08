@@ -4,9 +4,9 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
-CPPS = main.cpp
+CPPS = main.cpp PmergeMe.cpp
 
-HPPS = PmergeMe.hpp PmergeMe.cpp
+HPPS = PmergeMe.hpp 
 
 OBJS = $(CPPS:.cpp=.o)
 

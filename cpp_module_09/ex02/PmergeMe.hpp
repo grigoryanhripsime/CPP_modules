@@ -6,11 +6,11 @@
 #include <sstream>
 #include <ctime>
 
-template <typename T>
 class PmergeMe
 {
 	private:
-		T arr;
+		std::deque<int> arr_d;
+		std::vector<int> arr_v;
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe &other);
@@ -18,7 +18,5 @@ class PmergeMe
 		~PmergeMe();
 		void fill(int argc, char *argv[]);
 		void print();
-		void sort();
+		void sort(int argc, char *argv[]);
 };
-
-#include "PmergeMe.cpp"
