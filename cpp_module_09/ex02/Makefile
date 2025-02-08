@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
 CPPS = main.cpp
 
-HPPS = PmergeMe.hpp PmergeMe.tpp
+HPPS = PmergeMe.hpp PmergeMe.cpp
 
 OBJS = $(CPPS:.cpp=.o)
 

@@ -21,4 +21,4 @@ class PmergeMe
 		void sort();
 };
 
-#include "PmergeMe.tpp"
+#include "PmergeMe.cpp"

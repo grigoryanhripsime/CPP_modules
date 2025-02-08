@@ -3,9 +3,10 @@
 int main(int argc, char *argv[])
 {
 	clock_t start, end;
-    double deque_time, vector_time;
+    double deque_time;
+	double vector_time;
 
-    start = clock(); // Start the timer
+    start = clock();
 	if (argc < 2)
 	{
 		std::cerr<<"Invalid number of arguments!\n";
