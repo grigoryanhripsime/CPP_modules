@@ -66,6 +66,8 @@ void BitcoinExchange::exchange(std::ifstream &input)
 		if (value < 0)
             continue ;
 		std::map<std::string, double>::iterator found = this->data.find(line.substr(0, 10));
+		if (line.substr(0, 10).compare("2009-01-01") == 0)
+			found = data.begin();
 		if (found == data.end())
 		{
 			found = this->data.lower_bound(line.substr(0, 10));
@@ -75,7 +77,7 @@ void BitcoinExchange::exchange(std::ifstream &input)
             	continue ;
 			}
 		}
-		std::cout<<line.substr(0, 10)<<"=>"<<value<<"="<<value*found->second<<std::endl;
+		std::cout<<line.substr(0, 10)<<" => "<<value<<" = "<<value*found->second<<std::endl;
     }
 }
 
