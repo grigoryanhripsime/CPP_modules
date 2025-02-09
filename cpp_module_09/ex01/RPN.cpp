@@ -29,11 +29,11 @@ int RPN::calculate(std::string input)
 {
 	std::stringstream ss(input);
 	std::string word;
-	int last_val;
-	int current_val;
+	long last_val;
+	long current_val;
 	while (ss >> word)
 	{
-		if (word.size() != 1)
+		if (word.size() != 1 || word.find_first_not_of("0123456789+-*/") != std::string::npos)
 			throw std::runtime_error("Invalid argumnet!");
 		if (word[0] >= '0' && word[0] <= '9')
 			nums.push(word[0] - '0');
@@ -63,6 +63,8 @@ int RPN::calculate(std::string input)
 						throw std::runtime_error("Can't divide by 0!");
 					last_val /= current_val;
 			}
+			if (last_val > 2147483647)
+				throw std::runtime_error("Number is going to be overflowed!");
 			nums.push(last_val);
 		}
 	}
