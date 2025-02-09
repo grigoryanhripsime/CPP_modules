@@ -32,10 +32,10 @@ void PmergeMe::fill(int argc, char *argv[])
 	for (int i = 1; i < argc; i++)
 	{
 		std::stringstream ss(argv[i]);
-		long long ii;
+		long ii;
 		if (ss.str().size() > 10
 			|| ss.str().find_first_not_of("+0123456789") != std::string::npos
-			|| (ss.str().find('+') != std::string::npos && ss.str().find('+') != 0))
+			|| (ss.str().find('+') != std::string::npos && ss.str().find_last_of('+') != 0))
 			throw std::runtime_error("Invalid iput");
 		ss >> ii;
 		if (ii > 2147483647)
@@ -128,7 +128,7 @@ void PmergeMe::sort(int argc, char *argv[])
 	this->arr_d = rec(this->arr_d);
 	end = clock();
 	deque_time = static_cast<double>(end - start)  / CLOCKS_PER_SEC;
-	std::cout<<"Time to process a range of 5 elements with std::vector : "<<vector_time<<" us\n";
 	std::cout<<"Time to process a range of 5 elements with std::deque : "<<deque_time<<" us\n";
+	std::cout<<"Time to process a range of 5 elements with std::vector : "<<vector_time<<" us\n";
 }
 
